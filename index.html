@@ -31,26 +31,9 @@ function onDeviceReady(){
         e.preventDefault(); 
 	navigator.notification.confirm("Do you want to exit MMF?", onConfirmExit, "Madras Music Fest", "Yes,No");    }, false );
 }
-function checkConnection() {
-     var networkState = navigator.connection.type;
-     if(navigator.connection.type == Connection.NONE) {        
-        connSel='N';
-	   //  alert(connSel);
-	     
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, RgotFS, fail);
-    }
-   else
-      {
-	    connSel='Y';
-	     // alert(connSel);
-	 changedate('return');
-	 
-      }
-	
-}
-	
+
 function RgotFS(fileSystem) {
-        fileSystem.root.getFile("events.txt", null, RgotFileEntry, fail);
+        fileSystem.root.getFile("ailment.txt", null, RgotFileEntry, fail);
     }	
 	
 	
@@ -275,11 +258,12 @@ document.getElementById('lst_mnu').innerHTML=im_htm+"</font></table>" ;
 function ven_det(v)
 {
 	
-	k=0;
-	document.getElementById("xPort").style.display="block";
-	document.getElementById("xPort").style.visibility="true";
-	document.getElementById("lst_mnu").style.display="none";
-	document.getElementById("lst_mnu").style.visibility="false";
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, RgotFS, fail);
+	ajaxFunction();
+	document.getElementById("div_h").style.display="block";
+	document.getElementById("div_h").style.visibility="true";
+	document.getElementById("wrapper").style.display="none";
+	document.getElementById("wrapper").style.visibility="false";
 	var evt_lst="<table border='4' id='xportEve' class='ven1' cellpadding='1' cellspacing='1'>";
 	//events.push(["",String(eMon),String(eDat),String(eYr),pTim,venue,pnam,Pdeta,art,pLatLong]);	
 	for (var i = 0, len = events.length; i < len; i++)
@@ -329,6 +313,10 @@ function ven_det(v)
 			border-style: solid;
     border-color: black;
 		}
+.h_div
+        {
+            display:none;
+        }
 .hideDontTakeUpSpace
         {
             display:none;
@@ -352,6 +340,9 @@ function ven_det(v)
 		<tr height='50%'><td width='50%' align='center'><button onclick='ven_det(this.value);' class='btn2' value='health' >Health</button></td><td width='50%' align='center'><button onclick='ven_det(this.value);' class='btn2' value='Beauty'>Beauty</button></td></tr>
 <tr height='50%'><td width='50%' align='center'><button onclick='ven_det(this.value);' class='btn2' value='Cooking'>Cooking</button></td><td width='50%' align='center'><button onclick='ven_det(this.value);' class='btn2' value='General'>General</button></td></tr>
 	</table>
+		
+	</div>
+	<div id='h_div' class='h_div'>
 		
 	</div>
 <textarea id="rest1" class="hideDontTakeUpSpace" rows=1 cols=50></textarea>
