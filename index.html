@@ -386,19 +386,7 @@ function ven_det(v)
 
 .btn1 {  background-color: transparent; border:none; padding: 0; font-weight: bold; color: white;}
 
-table td {
-        text-align: center;
-    }
-    
-    @media screen and (min-width: 400px) {
-        table {
-            display: inline-table;    
-        }
-        
-        table:nth-of-type(2) td:first-of-type {
-            display: none;    
-        }   
-    }		
+
 	</style>
 	
 </head>
@@ -406,9 +394,9 @@ table td {
 <body style="background-color: transparent;" onload='init();'> 
 	
 <div id='wrapper'>
-	<table>
-		<tr><td>Health</td><td>Beauty</td></tr>
-		<tr><td>Cooking</td><td>General</td></tr>
+	<table width='100%'>
+		<tr height='50%'><td width='50%'><button onclick='ven_det(this.value);' class='btn2' value='health' >Health</button></td><td width='50%'><button onclick='ven_det(this.value);' class='btn2' value='Beauty'>Beauty</button></td></tr>
+<tr height='50%'><td width='50%'><button onclick='ven_det(this.value);' class='btn2' value='Cooking'>Cooking</button></td><td width='50%'><button onclick='ven_det(this.value);' class='btn2' value='General'>General</button></td></tr>
 	</table>
 		
 	</div>
