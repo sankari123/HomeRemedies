@@ -71,9 +71,9 @@ function gotFile(file){
         reader.onloadend = function(evt) {
             console.log("Read as text");
             console.log(evt.target.result);
-	 //   alert(evt.target.result);
+	   alert(evt.target.result);
 	    document.getElementById('rest1').value=evt.target.result;	
-	    changedate('return');
+	//    changedate('return');
         };
         reader.readAsText(file);
   }	
@@ -258,7 +258,8 @@ document.getElementById('lst_mnu').innerHTML=im_htm+"</font></table>" ;
 function ven_det(v)
 {
 	
-	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, RgotFS, fail);
+	alert('in');
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, RgotFS, fail);
 	//ajaxFunction();
 	document.getElementById("div_h").style.display="block";
 	document.getElementById("div_h").style.visibility="true";
