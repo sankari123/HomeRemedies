@@ -258,34 +258,28 @@ document.getElementById('lst_mnu').innerHTML=im_htm+"</font></table>" ;
 function ven_det(v)
 {
 	
-	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, RgotFS, fail);
-	ajaxFunction();
+	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, RgotFS, fail);
+	//ajaxFunction();
 	document.getElementById("div_h").style.display="block";
 	document.getElementById("div_h").style.visibility="true";
 	document.getElementById("wrapper").style.display="none";
 	document.getElementById("wrapper").style.visibility="false";
-	var evt_lst="<table border='4' id='xportEve' class='ven1' cellpadding='1' cellspacing='1'>";
-	//events.push(["",String(eMon),String(eDat),String(eYr),pTim,venue,pnam,Pdeta,art,pLatLong]);	
-	for (var i = 0, len = events.length; i < len; i++)
- {
-	if(events[i][5]==v)
-	{
-		alert('in');
-		if(k==0)
-		{
-			alert('in2');
-			evt_lst+="<tr><td colspan=3>"+v+"</td></tr><tr><td colspan=3> Programme</td></tr>";
-		}
-		k++;
-	   evt_lst+="<font size=2><tr valign='top'><td width='20%' bordercolor='black'> "+events[i][2]+"."+events[i][1]+"."+events[i][3]+"</td><td>"+events[i][4]+"</td><td>"+events[i][6]+"&nbsp;&nbsp;&nbsp;<b>"+events[i][8]+"</b>&nbsp;&nbsp;"+events[i][7]+"</td></tr>";
-		
-	}
-	 
- document.getElementById('xPort').innerHTML=evt_lst+"</table> <a id='downLoad' href='#'>Download</a>" ;
+	var client = new XMLHttpRequest();
+        client.open('GET', 'ailment.txt');
+        client.onreadystatechange = function() {
+                t = client.response 
+                t = t.split('\n');
+                var listbox;
+                for(i=0;i<t.length;i++){
+                        listbox +='<option value="'+i+'">'+t[i]+'</option>';
+                }
+                document.getElementById('lb').innerHTML=listbox;
+        }
+        client.send();
+	
+	
 	
 
- }
-//alert('venue '+v);
 }
 
 
@@ -343,7 +337,7 @@ function ven_det(v)
 		
 	</div>
 	<div id='h_div' class='h_div'>
-		
+		<select id="lb" name="lb" size="5"></select>
 	</div>
 <textarea id="rest1" class="hideDontTakeUpSpace" rows=1 cols=50></textarea>
 	
