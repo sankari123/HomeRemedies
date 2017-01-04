@@ -33,30 +33,6 @@ function onDeviceReady(){
 }
 
 function gotFS(fileSystem) {
-        fileSystem.root.getFile("ailment.txt", {create: false}, gotFileEntry, fail);
-    }
-
-    function gotFileEntry(fileEntry) {
-        fileEntry.file(gotFile, fail);
-    }
-
-    function gotFile(file){
-        readDataUrl(file);
-        readAsText(file);
-    }
-
-    function readDataUrl(file) {
-        var reader = new FileReader();
-        reader.onloadend = function(evt) {
-            console.log("Read as data URL");
-            console.log(evt.target.result);
-        };
-        reader.readAsDataURL(file);
-    }
-
-
-
-	unction gotFS(fileSystem) {
         fileSystem.root.getFile("ailment.txt", null, gotFileEntry, fail);
     }
 
@@ -90,7 +66,6 @@ function gotFS(fileSystem) {
     function fail(error) {
         console.log(error.code);
     }
-
 	
 	
 	
