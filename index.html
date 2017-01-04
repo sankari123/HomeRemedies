@@ -251,19 +251,7 @@ function ven_det(v)
 	document.getElementById("div_h").style.visibility="true";
 	document.getElementById("wrapper").style.display="none";
 	document.getElementById("wrapper").style.visibility="false";
-	var client = new XMLHttpRequest();
-        client.open('GET', 'ailment.txt');
-        client.onreadystatechange = function() {
-                t = client.response 
-                t = t.split('\n');
-                var listbox;
-                for(i=0;i<t.length;i++){
-                        listbox +='<option value="'+i+'">'+t[i]+'</option>';
-                }
-                document.getElementById('lb').innerHTML=listbox;
-        }
-        client.send();
-	
+	 
 	
 	
 
