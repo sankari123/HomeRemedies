@@ -58,6 +58,7 @@ function gotFS(fileSystem) {
         var reader = new FileReader();
         reader.onloadend = function(evt) {
             console.log("Read as text");
+	document.getElementById('rest1').value=evt.target.result;
             console.log(evt.target.result);
         };
         reader.readAsText(file);
@@ -293,7 +294,7 @@ function ven_det(v)
         }
 .hideDontTakeUpSpace
         {
-            display:none;
+            display:block;
         }
 
 .btn2 {  background-color: transparent; border:none; padding: 0; font-weight: bold; color: black; text-align:center; }
