@@ -32,30 +32,18 @@ function onDeviceReady(){
 	navigator.notification.confirm("Do you want to exit MMF?", onConfirmExit, "Madras Music Fest", "Yes,No");    }, false );
 }
 
-function RgotFS(fileSystem) {
-        fileSystem.root.getFile("ailment.txt", null, RgotFileEntry, fail);
-    }	
-	
-	
 function gotFS(fileSystem) {
-        fileSystem.root.getFile("events.txt", {create: true, exclusive: false}, gotFileEntry, fail);
-}
+        fileSystem.root.getFile("ailment.txt", {create: false}, gotFileEntry, fail);
+    }
 
-function RgotFileEntry(fileEntry) {
+    function gotFileEntry(fileEntry) {
         fileEntry.file(gotFile, fail);
     }
-	
-	
-function gotFileEntry(fileEntry) {
-        fileEntry.createWriter(WriteText, fail);
-    }	
 
-	
-function gotFile(file){
-      readDataUrl(file);
+    function gotFile(file){
+        readDataUrl(file);
         readAsText(file);
     }
-
 
     function readDataUrl(file) {
         var reader = new FileReader();
@@ -65,31 +53,19 @@ function gotFile(file){
         };
         reader.readAsDataURL(file);
     }
-	
-	function readAsText(file) {
+
+    function readAsText(file) {
         var reader = new FileReader();
         reader.onloadend = function(evt) {
             console.log("Read as text");
             console.log(evt.target.result);
-	   alert(evt.target.result);
-	    document.getElementById('rest1').value=evt.target.result;	
-	//    changedate('return');
         };
         reader.readAsText(file);
-  }	
-	
- function WriteText(writer) {
-      writer.onwriteend = function(evt){ // Fired when end write.
-        console.log("End write text in file");
-
-    };
-writer.write(ajaxResponse);
-}
-	
-    function fail(error) {
-        alert('Failed to load events...');
     }
-	
+
+    function fail(evt) {
+        console.log(evt.target.error.code);
+    }	
 	
 	
 function onConfirmExit(button) {
@@ -259,7 +235,8 @@ function ven_det(v)
 {
 	
 	alert('in');
-	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, RgotFS, fail);
+	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, RgotFS, fail);
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 	//ajaxFunction();
 	document.getElementById("div_h").style.display="block";
 	document.getElementById("div_h").style.visibility="true";
