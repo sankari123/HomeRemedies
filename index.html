@@ -34,10 +34,10 @@ function onDeviceReady(){
 
 function gotFS(fileSystem) {
    //     fileSystem.root.getFile("ailment.txt", null, gotFileEntry, fail);
-	 fileSystem.root.getFile('ailment.txt', {create: false, exclusive: false}, gotFileEntry, fail);
+	 fileSystem.root.getFile('ailment.txt', null, gotFileEntry, fail);
     }
 
-    }
+    
 
     function gotFileEntry(fileEntry) {
         fileEntry.file(gotFile, fail);
