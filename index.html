@@ -33,15 +33,18 @@ function onDeviceReady(){
 }
 
 function gotFS(fileSystem) {
-        fileSystem.root.getFile("ailment.txt", null, gotFileEntry, fail);
+   //     fileSystem.root.getFile("ailment.txt", null, gotFileEntry, fail);
+	 fileSystem.root.getFile('ailment.txt', {create: false, exclusive: false}, gotFileEntry, fail);
+    }
+
     }
 
     function gotFileEntry(fileEntry) {
-        fileEntry.file(gotFile, fail);
+        fileEntry.file(gotFile, fail1);
     }
 
     function gotFile(file){
-        readDataUrl(file);
+      //  readDataUrl(file);
         readAsText(file);
     }
 
@@ -66,8 +69,12 @@ function gotFS(fileSystem) {
 
     function fail(error) {
         console.log(error.code);
+	    alert('fail');
     }
-	
+function fail1(error) {
+        console.log(error.code);
+	alert('fail1');
+    }	
 	
 	
 function onConfirmExit(button) {
@@ -98,7 +105,9 @@ function ajaxFunction()
 	//document.getElementById("ajaxDiv").innerHTML = xhr.responseText;
 	document.getElementById('rest1').value=xhr.responseText;
 	ajaxResponse=xhr.responseText;
-	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, 
+				
+				);
 	procVal(ajaxResponse);
 	};
 	xhr.send();
