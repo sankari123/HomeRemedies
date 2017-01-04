@@ -40,7 +40,7 @@ function gotFS(fileSystem) {
     }
 
     function gotFileEntry(fileEntry) {
-        fileEntry.file(gotFile, fail1);
+        fileEntry.file(gotFile, fail);
     }
 
     function gotFile(file){
@@ -69,12 +69,9 @@ function gotFS(fileSystem) {
 
     function fail(error) {
         console.log(error.code);
-	    alert('fail');
+	    //alert('fail');
     }
-function fail1(error) {
-        console.log(error.code);
-	alert('fail1');
-    }	
+
 	
 	
 function onConfirmExit(button) {
